@@ -20,32 +20,31 @@
   </header>
   <main>
     <div class="container">
-      <form id="contact-form">
-        <h2>New Entry</h2>
-        <div class="row">
-          <div class="column-half">
-            <img src="images/placeholder-image-square.jpg">
-          </div>
-          <div class="column-half">
-            <label for="title">Title</label>
-              <input required name="title" type="text" id="title">
-            <label for="photo-url">Photo URL</label>
-              <input required name="photo-url" type="url" id="photo-url">
-          </div>
-        </div>
-        <div class="row">
-          <div class="column-full">
-            <label for="notes">Notes</label>
-              <textarea required rows="6" name="notes" id="notes"></textarea>
-          <!-- </div> -->
-
-            <div class="form-actions">
-              <button type="submit">SAVE</button>
+      <h2>New Entry</h2>
+      <div data-view="entry-form">
+        <form id="contact-form">
+          <div class="row">
+            <div class="column-half">
+              <img src="images/placeholder-image-square.jpg">
             </div>
-
+            <div class="column-half">
+              <label for="title">Title</label>
+                <input required name="title" type="text" id="title">
+              <label for="photo-url">Photo URL</label>
+                <input required name="photo-url" type="url" id="photo-url">
+            </div>
           </div>
-        </div>
-      </form>
+          <div class="row">
+            <div class="column-full">
+              <label for="notes">Notes</label>
+                <textarea required rows="6" name="notes" id="notes"></textarea>
+              <div class="form-actions">
+                <button type="submit">SAVE</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   </main>
   <script src="js/data.js"></script>
