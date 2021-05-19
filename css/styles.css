@@ -22,9 +22,29 @@ h2 {
   font-size: 44px;
 }
 
+h3 {
+  font: bolder;
+  font-size: 24px;
+}
+
+p {
+  font-size: 18px;
+}
+
+h3,
+p {
+  padding: 0.5rem;
+}
+
+span {
+  font-size: 75%;
+  padding-left: 3rem;
+}
+
 .column-half img {
   width: 400px;
   height: 400px;
+  object-fit: cover;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -73,4 +93,36 @@ textarea:focus {
   color: white;
   padding: 0.5rem 1rem 0.5rem 1rem;
   border: none;
+}
+
+.bar-action {
+  display: flex;
+  align-items: center;
+}
+
+.bar-action-left {
+  text-align: left;
+  flex-basis: 50%;
+}
+
+.bar-action-right {
+  text-align: right;
+  flex-basis: 50%;
+}
+
+.bar-action-right button {
+  background-color: rgb(86, 43, 129);
+  color: white;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border: none;
+}
+
+ul {
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin-bottom: 0; /* Remove margins */
+}
+
+li {
+  margin-bottom: 4rem;
 }
