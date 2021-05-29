@@ -1,20 +1,20 @@
 /* global data */
-const $image = document.querySelector('img');
-const $photoUrl = document.querySelector('#photo-url');
-const $entryForm = document.querySelector('#contact-form');
+/* exported data */
+
+var $image = document.querySelector('img');
+var $photoUrl = document.querySelector('#photo-url');
+var $entryForm = document.querySelector('#contact-form');
 $photoUrl.addEventListener('input', function (event) {
   $image.setAttribute('src', event.target.value);
 });
 
-/* exported data */
 $entryForm.addEventListener('submit', function (event) {
   event.preventDefault();
-  const entry = {
+  var entry = {
     title: $entryForm.elements.title.value,
     photoURL: $entryForm.elements['photo-url'].value,
     notes: $entryForm.elements.notes.value,
     entryId: data.nextEntryId
-
   };
   data.entries.unshift(entry);
   data.nextEntryId++;
@@ -23,20 +23,50 @@ $entryForm.addEventListener('submit', function (event) {
 
 });
 
-// const $displayTitle = document.createElement('h3');
-// const $displayUrl = document.createElement('img');
-// const $displayNotes = document.createElement('p');
+var test = {
+  title: 'This is an example title',
+  photoURL: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg',
+  notes: 'This is an example of notes'
+};
 
-// window.addEventListener('DOMContentLoaded', function (event) {
+function newItem(entry) {
 
-//   console.log('DOM fully loaded and parsed');
-//   console.log(data.entries);
-//   for (let i = 0; i < data.entries.length; i++) {
-//     console.log(data.entries[i]);
-//     $displayTitle.append(data.entries[i].title);
-//     $displayUrl.append(data.entries[i].photoURL);
-//     $displayNotes.append(data.entries[i].notes);
-//   }
-// });
+  var $listedItem = document.createElement('li');
+  $listedItem.setAttribute('class', 'listed-item');
 
-// console.log(data);
+  var $row = document.createElement('div');
+  $row.setAttribute('class', 'row');
+
+  var $columnHalf = document.createElement('div');
+  $columnHalf.setAttribute('class', 'column-half');
+
+  var $displayUrl = document.createElement('div');
+  $displayUrl.setAttribute('class', 'display-url');
+
+  var $image = document.createElement('img');
+  $image.setAttribute('src', entry.photoURL);
+
+  var $displayTitle = document.createElement('h3');
+  $displayTitle.textContent = entry.title;
+
+  var $displayNotes = document.createElement('p');
+  $displayNotes.textContent = entry.notes;
+
+  $listedItem.appendChild($row);
+  $row.appendChild($columnHalf);
+  $columnHalf.appendChild($displayUrl);
+  $displayUrl.appendChild($image);
+  $columnHalf.appendChild($displayTitle);
+  $columnHalf.appendChild($displayNotes);
+
+  return $listedItem;
+}
+var $uList = document.querySelector('ul');
+var $item = newItem(test);
+$uList.appendChild($item);
+
+// var $uList = document.querySelector('ul');
+for (let i = 0; i < data.entries.length; i++) {
+  $item = newItem(data.entries[i]);
+  $uList.appendChild($item);
+}
