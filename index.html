@@ -15,13 +15,20 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+
   <header>
-    <div class="code-journal"><h1>Code Journal</h1></div>
+    <div class="code-journal"><h1>Code Journal<a href="#" id="entries-view">Entries</a></h1></div>
   </header>
+
   <main>
+    <!-- container tag -->
     <div class="container">
-      <h2>New Entry</h2>
-      <div data-view="entry-form">
+      <!-- entry-form -->
+      <div class="view hidden" id="entry-form" data-view="entry-form" >
+        <!-- one bar action -->
+        <div class="bar-action">
+          <h2>New Entry</h2>
+        </div>
         <form id="contact-form">
           <div class="row">
             <div class="column-half">
@@ -44,6 +51,20 @@
             </div>
           </div>
         </form>
+      </div>
+      <!-- entries-view -->
+      <div class="view" id="entries" data-view="entries">
+        <div class="bar-action">
+          <!-- bar action left -->
+          <div class="bar-action-left">
+            <h2>Entries</h2>
+          </div>
+          <!-- bar action right -->
+          <div class="bar-action-right">
+            <a href="#" id="new-entry">NEW</a>
+          </div>
+        </div>
+        <ul></ul>
       </div>
     </div>
   </main>
