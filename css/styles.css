@@ -8,6 +8,15 @@ header {
   color: white;
 }
 
+a {
+  border-radius: 0.25rem;
+  background-color: rgb(86, 43, 129);
+  color: white;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border: none;
+  text-decoration: none;
+}
+
 .code-journal {
   max-width: 850px;
   margin: auto;
@@ -125,4 +134,8 @@ ul {
 
 li {
   margin-bottom: 4rem;
+}
+
+.hidden {
+  display: none;
 }

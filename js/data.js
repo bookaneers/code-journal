@@ -7,6 +7,9 @@ var data = {
   nextEntryId: 1
 };
 
+// to clean the local storage database
+// localStorage.clear();
+
 var previousDataJSON = localStorage.getItem('javascript-local-storage');
 
 if (previousDataJSON !== null) {
