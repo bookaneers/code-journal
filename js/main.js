@@ -52,6 +52,12 @@ function newItem(entry) {
   // create a new second div = column-half
   const $columnHalf2 = document.createElement('div');
   $columnHalf2.setAttribute('class', 'column-half');
+
+  const $half2half1 = document.createElement('div');
+  $half2half1.setAttribute('class', 'half-half');
+  const $half2half2 = document.createElement('div');
+  $half2half2.setAttribute('class', 'half-half');
+
   // create a div = display-url
   const $displayUrl = document.createElement('div');
   $displayUrl.setAttribute('class', 'display-url');
@@ -61,18 +67,27 @@ function newItem(entry) {
   // create a h3 tag
   const $displayTitle = document.createElement('h3');
   $displayTitle.textContent = entry.title;
+  // create a img tag
+  const $icon = document.createElement('img');
+  $icon.setAttribute('class', 'pen');
+  $icon.setAttribute('src', 'images/edit-icon.png');
   // create a p tag
   const $displayNotes = document.createElement('p');
   $displayNotes.textContent = entry.notes;
   // append everything together to listedItem
   $listedItem.appendChild($row);
+
   $row.appendChild($columnHalf1);
   $columnHalf1.appendChild($displayUrl);
   $displayUrl.appendChild($image);
+
   $row.appendChild($columnHalf2);
-  $columnHalf2.appendChild($displayTitle);
+  $columnHalf2.appendChild($half2half1);
+  $half2half1.appendChild($displayTitle);
   $displayTitle.appendChild($displayNotes);
-  // return the value of listedItem
+  $columnHalf2.appendChild($half2half2);
+  $half2half2.appendChild($icon);
+
   return $listedItem;
 }
 

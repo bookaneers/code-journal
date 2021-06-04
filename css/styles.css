@@ -139,3 +139,22 @@ li {
 .hidden {
   display: none;
 }
+
+.column-half {
+  display: flex;
+}
+
+.half-half {
+  flex-grow: 4;
+}
+
+.half-half img {
+  padding-top: 2rem;
+  max-width: 2rem;
+  height: auto;
+  display: center;
+}
+
+.pen img {
+  color: rgb(86, 43, 129);
+}
