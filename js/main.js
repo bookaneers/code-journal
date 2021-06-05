@@ -52,42 +52,42 @@ function newItem(entry) {
   // create a new second div = column-half
   const $columnHalf2 = document.createElement('div');
   $columnHalf2.setAttribute('class', 'column-half');
-
-  const $half2half1 = document.createElement('div');
-  $half2half1.setAttribute('class', 'half-half');
-  const $half2half2 = document.createElement('div');
-  $half2half2.setAttribute('class', 'half-half');
-
   // create a div = display-url
   const $displayUrl = document.createElement('div');
   $displayUrl.setAttribute('class', 'display-url');
-  // create a image
+
+  // create a div = display-url
+  const $displayText1 = document.createElement('div');
+  $displayText1.setAttribute('class', 'display-text');
+  const $displayText2 = document.createElement('div');
+  $displayText2.setAttribute('class', 'display-text');
+
+  // create a image tag
   const $image = document.createElement('img');
   $image.setAttribute('src', entry.photoURL);
   // create a h3 tag
   const $displayTitle = document.createElement('h3');
   $displayTitle.textContent = entry.title;
-  // create a img tag
+  // create another image tag
   const $icon = document.createElement('img');
-  $icon.setAttribute('class', 'pen');
+  // $icon.setAttribute('class', 'pen');
   $icon.setAttribute('src', 'images/edit-icon.png');
   // create a p tag
   const $displayNotes = document.createElement('p');
   $displayNotes.textContent = entry.notes;
   // append everything together to listedItem
   $listedItem.appendChild($row);
-
   $row.appendChild($columnHalf1);
   $columnHalf1.appendChild($displayUrl);
   $displayUrl.appendChild($image);
 
   $row.appendChild($columnHalf2);
-  $columnHalf2.appendChild($half2half1);
-  $half2half1.appendChild($displayTitle);
-  $displayTitle.appendChild($displayNotes);
-  $columnHalf2.appendChild($half2half2);
-  $half2half2.appendChild($icon);
-
+  $columnHalf2.appendChild($displayText1);
+  $displayText1.appendChild($displayTitle);
+  $displayTitle.appendChild($icon);
+  $columnHalf2.appendChild($displayText2);
+  $displayText2.appendChild($displayNotes);
+  // return listedItem
   return $listedItem;
 }
 

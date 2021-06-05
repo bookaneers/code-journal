@@ -140,21 +140,14 @@ li {
   display: none;
 }
 
-.column-half {
+.display-text h3 {
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.half-half {
-  flex-grow: 4;
-}
-
-.half-half img {
-  padding-top: 2rem;
+.display-text img {
   max-width: 2rem;
   height: auto;
   display: center;
-}
-
-.pen img {
-  color: rgb(86, 43, 129);
 }
