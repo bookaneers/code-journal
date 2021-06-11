@@ -6,7 +6,7 @@
 const $image = document.querySelector('img');
 // URL for image
 const $photoUrl = document.querySelector('#photo-url');
-// contact-form
+// contact-form - entire form
 const $contactForm = document.querySelector('#contact-form');
 
 // function to add a picture to form
@@ -19,16 +19,23 @@ $contactForm.addEventListener('submit', function (event) {
   event.preventDefault();
   // replacing an entry
   if (data.editing !== null) {
-    const updatedEntry = {
+    const $updatedEntry = {
       title: $contactForm.elements.title.value,
       photoURL: $contactForm.elements['photo-url'].value,
       notes: $contactForm.elements.notes.value,
-      entryId: data.nextEntryId
+      entryId: data.editing.entryId
     };
-    const $id = data.editing.entryId;
-    data.entries.splice(data.length - $id, 1, updatedEntry);
+
+    const $id = $updatedEntry.entryId;
+    for (let i = 0; i < data.entries.length; i++) {
+      if ($id === data.entries[i].entryId) {
+        data.entries.splice(i, 1, $updatedEntry);
+      }
+    }
+
     // reset data.editing
     data.editing = null;
+
     const $entriesListUpdated = document.querySelector('ul');
     $entriesListUpdated.innerHTML = '';
     for (let i = 0; i < data.entries.length; i++) {
@@ -98,6 +105,8 @@ function newItem(entry) {
   // $icon.setAttribute('class', 'pen');
   $icon.setAttribute('src', 'images/edit-icon.png');
   $icon.setAttribute('class', 'pen');
+
+  // DATA-ID
   $icon.setAttribute('data-id', entry.entryId);
   // create a p tag
   const $displayNotes = document.createElement('p');
@@ -147,6 +156,7 @@ $entriesList.addEventListener('click', function (event) {
   $entries.className = 'view hidden';
 
   const $entryNumber = event.target.getAttribute('data-id');
+
   const $number = parseInt($entryNumber);
 
   for (let i = 0; i < data.entries.length; i++) {
@@ -159,7 +169,6 @@ $entriesList.addEventListener('click', function (event) {
       data.editing = data.entries[i];
     }
   }
-
 });
 
 $entriesView.addEventListener('click', function (event) {
