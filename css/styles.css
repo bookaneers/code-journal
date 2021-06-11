@@ -139,3 +139,19 @@ li {
 .hidden {
   display: none;
 }
+
+.display-text h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.display-text img {
+  max-width: 2rem;
+  height: auto;
+  display: center;
+}
+
+.pen:hover {
+  cursor: pointer;
+}
