@@ -95,6 +95,8 @@ textarea:focus {
   padding-top: 1rem;
   padding-bottom: 3rem;
   text-align: right;
+  display: flex;
+  justify-content: space-between;
 }
 
 .form-actions button {
@@ -154,4 +156,32 @@ li {
 
 .pen:hover {
   cursor: pointer;
+}
+
+button.dismiss-modal {
+  background-color: rgb(235, 93, 93);
+}
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-dialog {
+  padding: 2rem;
+  background-color: white;
+  border-radius: 0.25rem;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 0 1rem;
 }

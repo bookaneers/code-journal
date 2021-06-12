@@ -1,6 +1,7 @@
 /* global data */
 /* exported data */
-// ---------------------------- ADDING AN ITEM ----------------------------
+
+// -------------------- ADDING AN ITEM - BEGINNING --------------------
 // querying the DOM
 // placeholder image
 const $image = document.querySelector('img');
@@ -19,28 +20,28 @@ $contactForm.addEventListener('submit', function (event) {
   event.preventDefault();
   // replacing an entry
   if (data.editing !== null) {
+    // create an object
     const $updatedEntry = {
       title: $contactForm.elements.title.value,
       photoURL: $contactForm.elements['photo-url'].value,
       notes: $contactForm.elements.notes.value,
       entryId: data.editing.entryId
     };
-
+    // create variable to hold entryId value
     const $id = $updatedEntry.entryId;
+    // iterate over entry array
     for (let i = 0; i < data.entries.length; i++) {
+      // if entryId value equals to the entryId value in array
       if ($id === data.entries[i].entryId) {
+        // replace itm with new information
         data.entries.splice(i, 1, $updatedEntry);
       }
     }
-
-    // reset data.editing
-    data.editing = null;
-
     const $entriesListUpdated = document.querySelector('ul');
     $entriesListUpdated.innerHTML = '';
     for (let i = 0; i < data.entries.length; i++) {
       // call function to display entry
-      var $item = newItem(data.entries[i]);
+      const $item = newItem(data.entries[i]);
       // append entry to UL
       $entriesListUpdated.appendChild($item);
     }
@@ -55,22 +56,24 @@ $contactForm.addEventListener('submit', function (event) {
     };
     // add object to array (database)
     data.entries.unshift(entry);
-    // increment next entry id
+
     // call newEntry function with the entry parameter and
     // store it in a variable
     const $item = newItem(entry);
     $uList.prepend($item);
+    // increment next entry id
     data.nextEntryId++;
   }
 
   // reset form
   document.getElementById('contact-form').reset();
-  // set image iin the form
+  // set image in the form
   $image.setAttribute('src', 'images/placeholder-image-square.jpg');
 });
 // ---------------------------- DISPLAY ITEMS ----------------------------
 // function to display entry
 function newItem(entry) {
+
   // create a new li
   const $listedItem = document.createElement('li');
   $listedItem.setAttribute('class', 'listed-item');
@@ -105,8 +108,6 @@ function newItem(entry) {
   // $icon.setAttribute('class', 'pen');
   $icon.setAttribute('src', 'images/edit-icon.png');
   $icon.setAttribute('class', 'pen');
-
-  // DATA-ID
   $icon.setAttribute('data-id', entry.entryId);
   // create a p tag
   const $displayNotes = document.createElement('p');
@@ -122,6 +123,7 @@ function newItem(entry) {
   $displayTitle.appendChild($icon);
   $columnHalf2.appendChild($displayText2);
   $displayText2.appendChild($displayNotes);
+
   // return listedItem
   return $listedItem;
 }
@@ -146,6 +148,7 @@ const $entriesList = document.querySelector('.entries-list');
 const $entryForm = document.querySelector('#entry-form');
 const $entries = document.querySelector('#entries');
 
+// function to identify each item to be alter or deleted
 $entriesList.addEventListener('click', function (event) {
   if (event.target.className !== 'pen') {
     return;
@@ -156,7 +159,6 @@ $entriesList.addEventListener('click', function (event) {
   $entries.className = 'view hidden';
 
   const $entryNumber = event.target.getAttribute('data-id');
-
   const $number = parseInt($entryNumber);
 
   for (let i = 0; i < data.entries.length; i++) {
@@ -182,3 +184,43 @@ $newEntry.addEventListener('click', function (event) {
   $h2.textContent = 'New Entry';
   $entries.className = 'view hidden';
 });
+
+// -------------------- MODAL - DELETE ROUTINE - BEGINNING --------------------
+var isOpen = false;
+var $openModal = document.querySelector('.open-modal');
+var $dismissModal = document.querySelector('.dismiss-modal');
+var $confirmed = document.querySelector('.confirmed');
+var $modalContainer = document.querySelector('.modal-container');
+
+// function to create a modal
+function toggleModal() {
+  isOpen = !isOpen;
+  if (isOpen) {
+    $modalContainer.className = 'modal-container';
+  } else {
+    $modalContainer.className = 'modal-container hidden';
+  }
+}
+
+// querying the DOM for click in the modal
+$openModal.addEventListener('click', toggleModal);
+$dismissModal.addEventListener('click', toggleModal);
+$confirmed.addEventListener('click', function (event) {
+
+  for (let i = 0; i < data.entries.length; i++) {
+
+    if (data.editing.entryId === data.entries[i].entryId) {
+
+      data.entries.splice(i, 1);
+      return;
+    }
+  }
+
+  isOpen = !isOpen;
+  if (isOpen) {
+    $modalContainer.className = 'modal-container';
+  } else {
+    $modalContainer.className = 'modal-container hidden';
+  }
+});
+// -------------------- MODAL - DELETE ROUTINE - END --------------------
