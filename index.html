@@ -47,6 +47,19 @@
               <label for="notes">Notes</label>
                 <textarea required rows="6" name="notes" id="notes"></textarea>
               <div class="form-actions">
+<!-- ==================================== -->
+                <button class="open-modal">Delete Entry</button>
+                <div class="modal-container hidden">
+                  <div class="modal-dialog">
+                    <h5>Are you sure ypou want to delete this entry?</h5>
+                    <div class="modal-actions">
+                      <button class="dismiss-modal">CANCEL</button>
+                      <button class="confirmed">CONFIRM</button>
+                    </div>
+                  </div>
+                </div>
+<!-- ==================================== -->
+
                 <button type="submit" id="button">SAVE</button>
               </div>
             </div>
